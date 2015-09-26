@@ -4,9 +4,9 @@
 
     <groupId>pl.codeleak.demos.sbt</groupId>
     <artifactId>spring-boot-thymeleaf</artifactId>
-    <version>1.0</version>
     <name>spring-boot-thymeleaf</name>
     <packaging>war</packaging>
+    <version>0.1</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -16,6 +16,7 @@
     </properties>
 
     <!-- Spring IO Platform for dependency management -->
+    <!--
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -27,6 +28,12 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+    -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>RELEASE</version>
+    </parent>
 
     <!-- Add typical dependencies for a web application -->
     <dependencies>
@@ -81,6 +88,7 @@
 
     <!-- Package as an executable jar -->
     <build>
+        <finalName>${project.artifactId}-${project.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -88,4 +96,19 @@
             </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>spring-milestone</id>
+            <url>https://repo.spring.io/libs-release</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-milestone</id>
+            <url>https://repo.spring.io/libs-release</url>
+        </pluginRepository>
+    </pluginRepositories>
+
 </project>

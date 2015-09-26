@@ -40,6 +40,6 @@ public class HomeControllerTest {
     @Test
     public void failingTest() {
         homePage.assertThat()
-                .hasNoActuatorLink("autoconfig");
+                .hasNoActuatorLink("not-exist-link");
     }
 }
