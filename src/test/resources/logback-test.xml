@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
+<configuration debug="true">
+
+   <property name="log-path" value="logs" />
+   <property name="log-name" value="${log-path}/application" />
 
    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
       <encoder>
-         <pattern>[%d{HH:mm:ss.SSS zzz}] %-5level [%t] %logger - %msg%n</pattern>
+         <pattern>[%d{HH:mm:ss.SSS zzz}] %-5level [%t] %logger{30}.%method\(\) - %msg%n</pattern>
+      </encoder>
+   </appender>
+
+   <appender name="DAILYLOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+      <file>${log-name}.log</file>
+      <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+         <fileNamePattern>${log-name}.%d{yyyyMMdd}.log</fileNamePattern>
+         <maxHistory>90</maxHistory>
+      </rollingPolicy>
+
+      <encoder>
+         <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS zzz}] %-5level [%t] %logger.%method\(\) - %msg%n</pattern>
       </encoder>
    </appender>
 
@@ -13,12 +28,17 @@
    </appender>
 
    <logger name="com.github.dandelion.core.web.handler.cache.HttpHeaderUtils" level="ERROR" />
-   <logger name="com.github.dandelion.datatables" level="INFO" />
-   <logger name="com.github.dandelion" level="INFO" />
+   <logger name="com.github.dandelion.datatables" level="DEBUG" />
+   <logger name="com.github.dandelion.core" level="WARN" />
+   <logger name="com.github.dandelion" level="WARN" />
+   <logger name="org.hibernate" level="INFO" />
+   <logger name="org.springframework" level="WARN" />
+   <logger name="org.thymeleaf.TemplateEngine" level="WARN" />
    <logger name="org.thymeleaf" level="INFO" />
 
    <root level="INFO">
       <appender-ref ref="ASYNC" />
+      <appender-ref ref="DAILYLOG" />
    </root>
 
 </configuration>
