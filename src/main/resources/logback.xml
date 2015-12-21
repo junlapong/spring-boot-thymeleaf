@@ -22,7 +22,7 @@
    <logger name="org.thymeleaf.TemplateEngine" level="WARN" />
    <logger name="org.thymeleaf" level="INFO" />
 
-   <root level="INFO">
+   <root level="DEBUG">
       <appender-ref ref="ASYNC" />
    </root>
 

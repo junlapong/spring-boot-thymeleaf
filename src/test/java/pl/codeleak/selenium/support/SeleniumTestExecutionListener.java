@@ -1,5 +1,12 @@
 package pl.codeleak.selenium.support;
 
+import static org.springframework.core.annotation.AnnotationUtils.findAnnotation;
+import static pl.codeleak.selenium.support.CaseFormat.toLowerUnderscore;
+
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -10,13 +17,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.Ordered;
 import org.springframework.test.context.TestContext;
 import org.springframework.test.context.support.AbstractTestExecutionListener;
-
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
-import static org.springframework.core.annotation.AnnotationUtils.findAnnotation;
-import static pl.codeleak.selenium.support.CaseFormat.toLowerUnderscore;
 
 public class SeleniumTestExecutionListener extends AbstractTestExecutionListener {
 
