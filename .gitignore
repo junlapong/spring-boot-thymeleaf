@@ -1,7 +1,9 @@
 .classpath
 .project
 .settings
-logs
-screenshots
-target
+.idea/
+logs/
+screenshots/
+target/
+spring-boot-thymeleaf.iml
 *.bak
